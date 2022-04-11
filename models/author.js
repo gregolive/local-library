@@ -13,7 +13,7 @@ const AuthorSchema = new Schema(
 // Virtual for author's full name
 AuthorSchema
 .virtual('name')
-.get(() =>  {
+.get(function() {
 // To avoid errors in cases where an author does not have either a family name or first name
 // We want to make sure we handle the exception by returning an empty string for that case
   let fullname = '';
@@ -27,7 +27,7 @@ AuthorSchema
 });
 
 // Virtual for author's lifespan
-AuthorSchema.virtual('lifespan').get(() => {
+AuthorSchema.virtual('lifespan').get(function() {
   let lifetime_string = '';
   if (this.date_of_birth) {
     lifetime_string = this.date_of_birth.getYear().toString();
@@ -42,7 +42,9 @@ AuthorSchema.virtual('lifespan').get(() => {
 // Virtual for author's URL
 AuthorSchema
 .virtual('url')
-.get(() => '/catalog/author/' + this._id);
+.get(function() {
+  '/catalog/author/' + this._id;
+});
 
 //Export model
 module.exports = mongoose.model('Author', AuthorSchema);
