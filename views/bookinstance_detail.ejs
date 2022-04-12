@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Local Library</title>
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+<body>
+  <div class="container">
+    <nav class='sidebar-nav'>
+      <a href='/catalog' class="nav-title">
+        <h1>Local Library</h1>
+      </a>
+      
+      <div class="nav-links">
+        <a href='/catalog/books'>📚 Library</a>
+        <a href='/catalog/bookinstances'>📖 Books</a>
+        <a href='/catalog/authors'>👤 Authors</a>
+        <a href='/catalog/genres'>🎲 Genres</a>
+      </div>
+      
+      <div class="nav-links">
+        <a href='/catalog/book/create'>➕ Add Book</a>
+        <a href='/catalog/author/create'>➕ Add Author</a>
+        <a href='/catalog/genre/create'>➕ Add Genre</a>
+      </div>
+    </nav>
+    
+    <main>
+      <section>
+        <h2>
+          <span class="subtitle">Copy of</span>
+          <%= bookinstance.book.title %>
+        </h2>
+
+        <div class="detail-info">
+          <strong>Imprint:</strong>
+          <p><%= bookinstance.imprint %></p>
+        </div>
+
+        <div class="detail-info">
+          <strong>Status:</strong>
+
+          <div class="instance-info">
+            <% if (bookinstance.status=='Available') { %>
+              <p class="text-success"><%= bookinstance.status %></p>
+            <% } else if (bookinstance.status=='Maintenance') { %>
+              <p class="text-danger"><%= bookinstance.status %></p>
+            <% } else { %>
+              <p class="text-warning"><%= bookinstance.status %></p>
+            <% } %>
+          </div>
+        </div>
+
+        <% if (bookinstance.status!='Available') { %>
+          <div class="detail-info">
+            <strong>Due back:</strong>
+            <p><%= bookinstance.due_back_formatted %></p>
+          </div>
+        <% } %>  
+
+        <span>See other copies of <a href="<%= bookinstance.book.url %>"><%= bookinstance.book.title %></a> in the library.</span>
+      </section>
+    </main>
+
+    <footer>
+      <p>
+        &copy;<a href='' target="_blank" class="footer-link">gregolive</a>
+      </p>
+    </footer>
+  </div>
+</body>
+</html>
