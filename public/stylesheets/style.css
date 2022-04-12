@@ -132,12 +132,12 @@ small {
   display: grid;
 }
 
-.book-info {
+.detail-info {
   display: flex;
   gap: 0.5rem;
 }
 
-.book-info > div {
+.detail-info > div {
   display: flex;
 }
 

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Local Library</title>
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+<body>
+  <div class="container">
+    <nav class='sidebar-nav'>
+      <a href='/catalog' class="nav-title">
+        <h1>Local Library</h1>
+      </a>
+      
+      <div class="nav-links">
+        <a href='/catalog/books'>📚 Library</a>
+        <a href='/catalog/bookinstances'>📖 Books</a>
+        <a href='/catalog/authors'>👤 Authors</a>
+        <a href='/catalog/genres'>🎲 Genres</a>
+      </div>
+      
+      <div class="nav-links">
+        <a href='/catalog/book/create'>➕ Add Book</a>
+        <a href='/catalog/author/create'>➕ Add Author</a>
+        <a href='/catalog/genre/create'>➕ Add Genre</a>
+      </div>
+    </nav>
+    
+    <main>
+      <section>
+        <h2><%= author.name %></h2>
+
+        <div class="detail-info">
+          <strong>Date of birth:</strong>
+          <% if (author.date_of_birth) { %>
+            <%= author.dob_formatted %>
+          <% } else { %>
+            no data
+          <% } %>
+        </div>
+        
+        <% if (author.date_of_death) { %>
+          <div class="detail-info">
+            <strong>Died:</strong>
+            <%= author.dod_formatted %>
+        </div>
+        <% } %>
+
+        <h3>Books</h3>
+
+        <% if (author_books.length > 0) { %>
+          <p>The library currently contains the following books by this author:</p>
+          <ul class="card-list large-cards">
+            <% author_books.forEach((book) => { %>
+              <li class="card">
+                <a href="<%=book.url%>"><%= book.title %></a>
+                <p><%= book.summary %></p>
+              </li>
+            <% }) %>
+          </ul>
+        <% } else { %>
+          <p>The library has no books by this author.</p>
+        <% } %>
+      </section>
+    </main>
+
+    <footer>
+      <p>
+        &copy;<a href='' target="_blank" class="footer-link">gregolive</a>
+      </p>
+    </footer>
+  </div>
+</body>
+</html>

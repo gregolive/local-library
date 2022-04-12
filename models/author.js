@@ -29,7 +29,9 @@ AuthorSchema
 });
 
 // Virtual for author's lifespan
-AuthorSchema.virtual('lifespan').get(function() {
+AuthorSchema
+.virtual('lifespan')
+.get(function() {
   let lifetime_string = '';
   if (this.date_of_birth) {
     lifetime_string = DateTime.fromJSDate(this.date_of_birth).year;
@@ -39,6 +41,20 @@ AuthorSchema.virtual('lifespan').get(function() {
     lifetime_string += DateTime.fromJSDate(this.date_of_death).year;
   }
   return lifetime_string;
+});
+
+// Virtual for author's date of birth
+AuthorSchema
+.virtual('dob_formatted')
+.get(function() {
+    return (this.date_of_birth) ? DateTime.fromJSDate(this.date_of_birth).toLocaleString(DateTime.DATE_MED) : '';
+});
+
+// Virtual for author's date of death
+AuthorSchema
+.virtual('dod_formatted')
+.get(function() {
+    return (this.date_of_death) ? DateTime.fromJSDate(this.date_of_death).toLocaleString(DateTime.DATE_MED) : '';
 });
 
 // Virtual for author's URL

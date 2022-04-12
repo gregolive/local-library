@@ -32,12 +32,12 @@
       <section>
         <h2><%= book.title %></h2>
 
-        <div class="book-info">
+        <div class="detail-info">
           <strong>Author:</strong>
           <a href="<%= book.author.url %>"><%= book.author.name %></a>
         </div>
 
-        <div class="book-info">
+        <div class="detail-info">
           <strong>Genres:</strong>
           <div>
             <% if (book.genre.length > 0) { %>
@@ -51,7 +51,7 @@
           </div>
         </div>
 
-        <div class="book-info">
+        <div class="detail-info">
           <strong>ISBN:</strong>
           <p><%= book.isbn %></p>
         </div>
