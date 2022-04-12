@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Local Library</title>
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+<body>
+  <div class="container">
+    <nav class='sidebar-nav'>
+      <a href='/catalog' class="nav-title">
+        <h1>Local Library</h1>
+      </a>
+      
+      <div class="nav-links">
+        <a href='/catalog/books'>📚 Library</a>
+        <a href='/catalog/bookinstances'>📖 Books</a>
+        <a href='/catalog/authors'>👤 Authors</a>
+        <a href='/catalog/genres'>🎲 Genres</a>
+      </div>
+      
+      <div class="nav-links">
+        <a href='/catalog/book/create'>➕ Add Book</a>
+        <a href='/catalog/author/create'>➕ Add Author</a>
+        <a href='/catalog/genre/create'>➕ Add Genre</a>
+      </div>
+    </nav>
+    
+    <main>
+      <section>
+        <h2><%= title %></h2>
+
+        <form method="post" action="">
+          <label for="name">
+            Name
+            <input type="text" name="name" placeholder="Fantasy, Poetry etc." value="<% (typeof genre === "undefined") ? "" : genre.name %>">
+          </label>
+
+          <ul class="error-list">
+            <% if (typeof errors !== "undefined" && errors.length > 0) { %>
+              <% errors.forEach((error, index) => { %>
+                <li class="error-item">
+                  <%= error.msg %><% if (index < errors.length - 1) { %>,<% } else { %>.<% } %>
+                </li>
+              <% }) %>
+            <% } %>
+          </ul>
+
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+      </section>
+    </main>
+
+    <footer>
+      <p>
+        &copy;<a href='' target="_blank" class="footer-link">gregolive</a>
+      </p>
+    </footer>
+  </div>
+</body>
+</html>
