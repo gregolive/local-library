@@ -99,7 +99,7 @@ small {
 
 .card-list {
   padding-left: 0;
-  grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
   gap: 1.5rem;
 }
 
@@ -109,7 +109,9 @@ small {
   border-radius: 0.25rem;
   padding: 0.5rem 1rem;
   align-self: start;
-  display: grid;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   gap: 0.5rem;
   transition: all 0.3s ease;
 }
