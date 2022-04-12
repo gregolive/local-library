@@ -49,7 +49,7 @@
                   <% } %>
 
                   <% if (instance.status!='Available') { %>
-                    <small>(Due: <%= formatDate(instance.due_back) %>)</small>
+                    <small>(Due: <%= instance.due_back_formatted %>)</small>
                   <% } %>
                 </div>
               </li>
