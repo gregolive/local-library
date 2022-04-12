@@ -2,6 +2,7 @@ const Author = require('../models/author');
 const Book = require('../models/book');
 const async = require('async');
 const { body, validationResult } = require('express-validator');
+const { format } = require('date-fns');
 
 // Display list of all Authors.
 exports.author_list = (req, res, next) => {
@@ -59,7 +60,7 @@ exports.author_create_post = [
 
         if (!errors.isEmpty()) {
             // There are errors. Render form again with sanitized values/errors messages.
-            res.render('author_form', { title: 'Add Author', author: req.body, errors: errors.array() });
+            res.render('author_form', { title: 'Add Author', author: req.body, formatDate: format, errors: errors.array() });
             return;
         }
         else {

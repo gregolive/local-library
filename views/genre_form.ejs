@@ -34,8 +34,8 @@
 
         <form method="post" action="">
           <label for="name">
-            Name
-            <input type="text" name="name" id="name" placeholder="Fantasy, Poetry etc." value="<% (typeof genre === "undefined") ? "" : genre.name %>">
+            <span>Name</span>
+            <input type="text" name="name" id="name" placeholder="Fantasy, Poetry etc." value="<%= (typeof genre === "undefined") ? "" : genre.name %>">
           </label>
 
           <button type="submit" class="btn btn-primary">Submit</button>

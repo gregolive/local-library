@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;600;700&display=swap');
 
 :root {
   --white: #EDEDF4;
@@ -176,10 +176,13 @@ label {
   display: grid;
   gap: 0.5rem;
   grid-template-columns: 9rem 1fr;
-  align-items: center;
 }
 
-input {
+label > span {
+  padding-top: calc(0.3rem + 1px);
+}
+
+input, textarea, select {
   font-family: 'Roboto Mono', monospace;
   font-size: 1rem;
   border: 1px solid var(--black);
@@ -187,9 +190,31 @@ input {
   padding: 0.3rem 0.5rem;
 }
 
+select {
+  padding: 0.3rem 0.25rem;
+}
+
+.checkbox-group {
+  padding: 0.3rem 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+  row-gap: 0.3rem;
+}
+
+.checkbox-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.checkbox-item > label {
+  padding-top: 0;
+  display: flex;
+  font-size: 1rem;
+}
+
 .error-list {
   padding-left: 0;
-  
 }
 
 .error-item {
