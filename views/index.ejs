@@ -1,11 +1,42 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-  </body>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Local Library</title>
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+<body>
+  <div class="container">
+    <nav class='sidebar-nav'>
+      <a href='/catalog' class="nav-title">
+        <h1>Local Library</h1>
+      </a>
+      
+      <div class="nav-links">
+        <a href='/catalog/books'>📚 Books</a>
+        <a href='/catalog/authors'>👤 Authors</a>
+        <a href='/catalog/genres'>🎲 Genres</a>
+        <a href='/catalog/booksinstances'>📖 Book Instances</a>
+      </div>
+      
+      <div class="nav-links">
+        <a href='/catalog/book/create'>➕ Add Book</a>
+        <a href='/catalog/author/create'>➕ Add Author</a>
+        <a href='/catalog/genre/create'>➕ Add Genre</a>
+      </div>
+    </nav>
+    
+    <main>
+
+    </main>
+
+    <footer>
+      <p>
+        &copy;<a href='' target="_blank" class="footer-link">gregolive</a>
+      </p>
+    </footer>
+  </div>
+</body>
 </html>
