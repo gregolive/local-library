@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Local Library</title>
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+<body>
+  <div class="container">
+    <nav class='sidebar-nav'>
+      <a href='/catalog' class="nav-title">
+        <h1>Local Library</h1>
+      </a>
+      
+      <div class="nav-links">
+        <a href='/catalog/books'>📚 Library</a>
+        <a href='/catalog/bookinstances'>📖 Books</a>
+        <a href='/catalog/authors'>👤 Authors</a>
+        <a href='/catalog/genres'>🎲 Genres</a>
+      </div>
+      
+      <div class="nav-links">
+        <a href='/catalog/book/create'>➕ Add Book</a>
+        <a href='/catalog/author/create'>➕ Add Author</a>
+        <a href='/catalog/genre/create'>➕ Add Genre</a>
+      </div>
+    </nav>
+    
+    <main>
+      <section>
+        <h2><%= book.title %></h2>
+
+        <div class="book-info">
+          <strong>Author:</strong>
+          <a href="<%= book.author.url %>"><%= book.author.name %></a>
+        </div>
+
+        <div class="book-info">
+          <strong>Genres:</strong>
+          <div>
+            <% if (book.genre.length > 0) { %>
+              <% book.genre.forEach((genre, index) => { %>
+                <a href="<%= genre.url %>"><%= genre.name %></a>
+                <% if (index < book.genre.length - 1) { %>,&nbsp;<% } %>
+              <% }) %>
+            <% } else { %>
+              none
+            <% } %>
+          </div>
+        </div>
+
+        <div class="book-info">
+          <strong>ISBN:</strong>
+          <p><%= book.isbn %></p>
+        </div>
+
+        <p><%= book.summary %></p>
+
+        <h3>Copies</h3>
+        <% if (book_instances.length > 0) { %>
+          <p>The library currently contains the following copies of this book:</p>
+          <ul class="card-list">
+            <% book_instances.forEach((instance) => { %>
+              <li class="card">
+                <a href="<%=instance.url%>"><%= book.title %>: <%= instance.imprint %></a>
+
+                <div class="instance-info">
+                  <% if (instance.status=='Available') { %>
+                    <small class="text-success"><%= instance.status %></small>
+                  <% } else if (instance.status=='Maintenance') { %>
+                    <small class="text-danger"><%= instance.status %></small>
+                  <% } else { %>
+                    <small class="text-warning"><%= instance.status %></small>
+                  <% } %>
+
+                  <% if (instance.status!='Available') { %>
+                    <small>(Due: <%= instance.due_back_formatted %>)</small>
+                  <% } %>
+                </div>
+              </li>
+            <% }) %>
+          </ul>
+        <% } else { %>
+          <p>There are no copies of this book in the library.</p>
+        <% } %>
+      </section>
+    </main>
+
+    <footer>
+      <p>
+        &copy;<a href='' target="_blank" class="footer-link">gregolive</a>
+      </p>
+    </footer>
+  </div>
+</body>
+</html>

@@ -11,7 +11,7 @@ const GenreSchema = new Schema(
 GenreSchema
 .virtual('url')
 .get(function() {
-  '/catalog/genre/' + this._id;
+  return '/catalog/genre/' + this._id;
 });
 
 //Export model
