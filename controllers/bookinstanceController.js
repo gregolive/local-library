@@ -1,8 +1,17 @@
 const BookInstance = require('../models/bookinstance');
 
+const fns = require('date-fns');
+const formatDate = (date) => fns.format(date, "yyyy-MM-dd");
+
 // Display list of all BookInstances.
-exports.bookinstance_list = (req, res) => {
-    res.send('NOT IMPLEMENTED: BookInstance list');
+exports.bookinstance_list = (req, res, next) => {
+    BookInstance.find()
+        .populate('book')
+        .exec(function (err, list_bookinstances) {
+        if (err) { return next(err); }
+        // Successful, so render
+        res.render('bookinstance_list', { title: 'All Books', bookinstance_list: list_bookinstances, formatDate: formatDate });
+    });
 };
 
 // Display detail page for a specific BookInstance.

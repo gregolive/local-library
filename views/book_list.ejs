@@ -31,23 +31,19 @@
     <main>
       <section>
         <h2><%= title %></h2>
-        <p>Welcome to <em>LocalLibrary</em>, a very basic Express website developed as a <a href="https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/Tutorial_local_library_website" target="_blank">tutorial example</a> on the Mozilla Developer Network.</p>
-      </section>
 
-      <section>
-        <h3>Library Stats</h3>
-
-        <% if (error) { %>
-          <p>Something went wrong! Error loading content.</p>
-        <% } else { %>
-          <p>The library has the following record counts:</p>
-          <ul>
-            <li><strong>Books:</strong> <%= data.book_count %></li>
-            <li><strong>Copies:</strong> <%= data.book_instance_count %></li>
-            <li><strong>Copies available:</strong> <%= data.book_instance_available_count %></li>
-            <li><strong>Authors:</strong> <%= data.author_count %></li>
-            <li><strong>Genres:</strong> <%= data.genre_count %></li>
+        <% if (book_list.length > 0) { %>
+          <p>The library currently contains the following books:</p>
+          <ul class="card-list">
+            <% book_list.forEach((book) => { %>
+              <li class="card">
+                <a href="<%=book.url%>"><%= book.title %></a>
+                <small>(<%= book.author.name %>)</small>
+              </li>
+            <% }) %>
           </ul>
+        <% } else { %>
+          <p>The library currently contains no books.</p>
         <% } %>
       </section>
     </main>

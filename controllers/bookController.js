@@ -1,9 +1,9 @@
 const Book = require('../models/book');
-var Author = require('../models/author');
-var Genre = require('../models/genre');
-var BookInstance = require('../models/bookinstance');
+const Author = require('../models/author');
+const Genre = require('../models/genre');
+const BookInstance = require('../models/bookinstance');
 
-var async = require('async');
+const async = require('async');
 
 exports.index = (req, res) => {
     async.parallel({
@@ -23,14 +23,22 @@ exports.index = (req, res) => {
             Genre.countDocuments({}, callback);
         }
     }, function(err, results) {
-        res.render('index', { title: 'Home', error: err, data: results });
+        res.render('index', { title: 'Local Library Home', error: err, data: results });
     });  
 };
 
-// Display list of all books.
-exports.book_list = (req, res) => {
-    res.send('NOT IMPLEMENTED: Book list');
-};
+// Display list of all Books.
+exports.book_list = (req, res, next) => {
+    Book.find({}, 'title author')
+      .sort({title : 1})
+      .populate('author')
+      .exec(function (err, list_books) {
+        if (err) { return next(err); }
+        //Successful, so render
+        res.render('book_list', { title: 'Library', book_list: list_books });
+      });
+  
+  };
 
 // Display detail page for a specific book.
 exports.book_detail = (req, res) => {

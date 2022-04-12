@@ -3,8 +3,9 @@
 :root {
   --white: #EDEDF4;
   --black: #2B2D42;
+  --link: #048A81;
   --danger: #A71D31;
-  --success: #048A81;
+  --success: #52CB97;
   --warning: #E0CA3C;
 }
 
@@ -29,7 +30,7 @@ nav {
 
 a {
   text-decoration: none;
-  color: var(--success);
+  color: var(--link);
 }
 
 a:hover {
@@ -92,6 +93,47 @@ li {
   list-style-type: square;
 }
 
+small {
+  font-weight: 600;
+}
+
+.card-list {
+  padding-left: 0;
+  grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
+  gap: 1rem;
+}
+
+.card {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.25);
+  border-radius: 0.25rem;
+  padding: 0.5rem 1rem;
+  align-self: start;
+  display: grid;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.25);
+}
+
+.instance-info {
+  display: grid;
+}
+
+.text-success {
+  color: var(--success);
+}
+
+.text-danger {
+  color: var(--danger);
+}
+
+.text-warning {
+  color: var(--warning);
+}
+
 footer {
   color: var(--white);
   background: var(--black);
@@ -105,6 +147,12 @@ footer {
 .footer-link {
   color: var(--white);
   margin-left: 0.25rem;
+}
+
+@media screen and (max-width: 1024px) {
+  nav {
+    padding: 2rem calc(1.4rem + 0.8vw);
+  }
 }
 
 @media screen and (max-width: 768px) {

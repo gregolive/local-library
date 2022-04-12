@@ -31,23 +31,32 @@
     <main>
       <section>
         <h2><%= title %></h2>
-        <p>Welcome to <em>LocalLibrary</em>, a very basic Express website developed as a <a href="https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/Tutorial_local_library_website" target="_blank">tutorial example</a> on the Mozilla Developer Network.</p>
-      </section>
 
-      <section>
-        <h3>Library Stats</h3>
+        <% if (bookinstance_list.length > 0) { %>
+          <p>The library currently contains the following book copies:</p>
+          <ul class="card-list">
+            <% bookinstance_list.forEach((instance) => { %>
+              <li class="card">
+                <a href="<%=instance.url%>"><%= instance.book.title %>: <%= instance.imprint %></a>
 
-        <% if (error) { %>
-          <p>Something went wrong! Error loading content.</p>
-        <% } else { %>
-          <p>The library has the following record counts:</p>
-          <ul>
-            <li><strong>Books:</strong> <%= data.book_count %></li>
-            <li><strong>Copies:</strong> <%= data.book_instance_count %></li>
-            <li><strong>Copies available:</strong> <%= data.book_instance_available_count %></li>
-            <li><strong>Authors:</strong> <%= data.author_count %></li>
-            <li><strong>Genres:</strong> <%= data.genre_count %></li>
+                <div class="instance-info">
+                  <% if (instance.status=='Available') { %>
+                    <small class="text-success"><%= instance.status %></small>
+                  <% } else if (instance.status=='Maintenance') { %>
+                    <small class="text-danger"><%= instance.status %></small>
+                  <% } else { %>
+                    <small class="text-warning"><%= instance.status %></small>
+                  <% } %>
+
+                  <% if (instance.status!='Available') { %>
+                    <small>(Due: <%= formatDate(instance.due_back) %>)</small>
+                  <% } %>
+                </div>
+              </li>
+            <% }) %>
           </ul>
+        <% } else { %>
+          <p>There are no book copies in this library.</p>
         <% } %>
       </section>
     </main>
