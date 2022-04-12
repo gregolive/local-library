@@ -15,10 +15,10 @@
       </a>
       
       <div class="nav-links">
-        <a href='/catalog/books'>📚 Books</a>
+        <a href='/catalog/books'>📚 Library</a>
+        <a href='/catalog/booksinstances'>📖 Books</a>
         <a href='/catalog/authors'>👤 Authors</a>
         <a href='/catalog/genres'>🎲 Genres</a>
-        <a href='/catalog/booksinstances'>📖 Book Instances</a>
       </div>
       
       <div class="nav-links">
@@ -29,7 +29,27 @@
     </nav>
     
     <main>
+      <section>
+        <h2><%= title %></h2>
+        <p>Welcome to <em>LocalLibrary</em>, a very basic Express website developed as a <a href="https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/Tutorial_local_library_website" target="_blank">tutorial example</a> on the Mozilla Developer Network.</p>
+      </section>
 
+      <section>
+        <h3>Library Stats</h3>
+        
+        <% if (error) { %>
+          <p>Something went wrong! Error loading content.</p>
+        <% } else { %>
+          <p>The library has the following record counts:</p>
+          <ul>
+            <li><strong>Books:</strong> <%= data.book_count %> </li>
+            <li><strong>Copies:</strong> <%= data.book_instance_count %> </li>
+            <li><strong>Copies available:</strong> <%= data.book_instance_available_count %> </li>
+            <li><strong>Authors:</strong> <%= data.author_count %> </li>
+            <li><strong>Genres:</strong> <%= data.genre_count %> </li>
+          </ul>
+        <% } %>
+      </section>
     </main>
 
     <footer>

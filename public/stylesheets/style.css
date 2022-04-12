@@ -29,15 +29,20 @@ nav {
 
 a {
   text-decoration: none;
-  color: var(--black);
+  color: var(--success);
 }
 
 a:hover {
   text-decoration: underline;
 }
 
+.nav-title {
+  color: var(--black);
+}
+
 h1 {
   font-size: 1.6rem;
+  font-weight: 700;
   margin: 0;
 }
 
@@ -47,16 +52,44 @@ h1 {
   gap: 0.5rem;
 }
 
-.nav-links > a {
-  color: var(--success);
-}
-
 main {
   padding: 2rem calc(2rem + 2vw);
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+section {
+  display: grid;
+  gap: 1rem;
+}
+
+h2 {
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin: 0;
 }
 
 p {
   margin: 0;
+}
+
+h3 {
+  font-size: 1.3rem;
+  font-weight: 500;
+  margin: 0;
+}
+
+ul {
+  font-size: 1.1rem;
+  margin: 0;
+  padding-left: 2rem;
+  display: grid;
+  gap: 0.4rem;
+}
+
+li {
+  list-style-type: square;
 }
 
 footer {
@@ -91,11 +124,23 @@ footer {
     grid-column: 1 / -1;
     text-align: center;
   }
+
+  h1 {
+    font-size: 1.75rem;
+  }
+
+  main {
+    padding: 1.5rem calc(2rem + 5vw);
+  }
 }
 
 @media screen and (max-width: 768px) {
   nav {
     padding: 1rem 5vw;
     column-gap: 1rem;
+  }
+
+  main {
+    padding: 1.5rem 5vw;
   }
 }
