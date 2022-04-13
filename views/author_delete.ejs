@@ -31,28 +31,11 @@
     
     <main>
       <section>
-        <h2><%= author.name %></h2>
-
-        <div class="detail-info">
-          <strong>Date of birth:</strong>
-          <% if (author.date_of_birth) { %>
-            <%= author.dob_formatted %>
-          <% } else { %>
-            no data
-          <% } %>
-        </div>
-        
-        <% if (author.date_of_death) { %>
-          <div class="detail-info">
-            <strong>Died:</strong>
-            <%= author.dod_formatted %>
-        </div>
-        <% } %>
-
-        <h3>Books</h3>
+        <h2><span class="subtitle"><%= title %>:</span> <%= author.name %></h2>
 
         <% if (author_books.length > 0) { %>
-          <p>The library currently contains the following books by this author:</p>
+          <p>You must delete the following books before attempting to delete this author:</p>
+
           <ul class="card-list large-cards">
             <% author_books.forEach((book) => { %>
               <li class="card">
@@ -62,10 +45,13 @@
             <% }) %>
           </ul>
         <% } else { %>
-          <p>The library has no books by this author.</p>
-        <% } %>
+          <p>Are you sure you want to delete this Author?</p>
 
-        <a href="<%= author.url + '/delete' %>" class="text-danger">Delete author</a>
+          <form method="post" action="">
+            <input type="hidden" name="authorid" id="authorid" value="<%= author._id %>">  
+            <button type="submit" class="btn btn-secondary">Delete</button>
+          </form>
+        <% } %> 
       </section>
     </main>
 

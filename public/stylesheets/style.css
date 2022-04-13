@@ -7,6 +7,7 @@
   --link: #048A81;
   --link-secondary: #12F8E8;
   --danger: #A71D31;
+  --danger-secondary: #E77485;
   --success: #52CB97;
   --warning: #E0CA3C;
 }
@@ -143,6 +144,10 @@ small {
   color: var(--danger);
 }
 
+a.text-danger:hover {
+  color: var(--danger-secondary);
+}
+
 .text-warning {
   color: var(--warning);
 }
@@ -245,6 +250,16 @@ select {
 .btn-primary:hover {
   color: var(--link-secondary);
   box-shadow: -3px -3px 0 var(--link-secondary);
+}
+
+.btn-secondary {
+  color: var(--white);
+  background: var(--danger);
+}
+
+.btn-secondary:hover {
+  color: var(--danger-secondary);
+  box-shadow: -3px -3px 0 var(--danger-secondary);
 }
 
 footer {
