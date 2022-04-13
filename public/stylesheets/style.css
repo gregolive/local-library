@@ -262,6 +262,12 @@ select {
   box-shadow: -3px -3px 0 var(--danger-secondary);
 }
 
+.button-row {
+  margin-top: 1rem;
+  display: flex;
+  gap: 1.5rem;
+}
+
 footer {
   color: var(--white);
   background: var(--black);

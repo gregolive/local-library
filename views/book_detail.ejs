@@ -86,6 +86,11 @@
         <% } else { %>
           <p>There are no copies of this book in the library.</p>
         <% } %>
+
+        <div class="button-row">
+          <a href="<%= book.url + '/update' %>">Edit book</a>
+          <a href="<%= book.url + '/delete' %>" class="text-danger">Delete book</a>
+        </div>
       </section>
     </main>
 

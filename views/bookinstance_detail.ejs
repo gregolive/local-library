@@ -63,6 +63,11 @@
         <% } %>  
 
         <span>See other copies of <a href="<%= bookinstance.book.url %>"><%= bookinstance.book.title %></a> in the library.</span>
+
+        <div class="button-row">
+          <a href="<%= bookinstance.url + '/update' %>">Edit copy</a>
+          <a href="<%= bookinstance.url + '/delete' %>" class="text-danger">Delete copy</a>
+        </div>
       </section>
     </main>
 

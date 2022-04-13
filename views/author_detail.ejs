@@ -65,7 +65,10 @@
           <p>The library has no books by this author.</p>
         <% } %>
 
-        <a href="<%= author.url + '/delete' %>" class="text-danger">Delete author</a>
+        <div class="button-row">
+          <a href="<%= author.url + '/update' %>">Edit author</a>
+          <a href="<%= author.url + '/delete' %>" class="text-danger">Delete author</a>
+        </div>
       </section>
     </main>
 
