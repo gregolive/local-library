@@ -46,12 +46,12 @@
 
           <label for="date_of_birth">
             <span>Date of Birth</span>
-            <input type="date" name="date_of_birth" id="date_of_birth" placeholder="dd/mm/yyyy" value="<%= (typeof author === "undefined") ? "" : formatDate(author.date_of_birth, 'yyyy-MM-dd') %>">
+            <input type="date" name="date_of_birth" id="date_of_birth" placeholder="dd/mm/yyyy" value="<%= (typeof author === "undefined" || !author.date_of_birth) ? "" : formatDate(author.date_of_birth, 'yyyy-MM-dd') %>">
           </label>
 
           <label for="date_of_death">
             <span>Date of Death</span>
-            <input type="date" name="date_of_death" id="date_of_death" placeholder="dd/mm/yyyy" value="<%= (typeof author === "undefined") ? "" : formatDate(author.date_of_death, 'yyyy-MM-dd') %>">
+            <input type="date" name="date_of_death" id="date_of_death" placeholder="dd/mm/yyyy" value="<%= (typeof author === "undefined" || !author.date_of_death) ? "" : formatDate(author.date_of_death, 'yyyy-MM-dd') %>">
           </label>
 
           <button type="submit" class="btn btn-primary">Submit</button>

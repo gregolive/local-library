@@ -192,6 +192,8 @@ input, textarea, select {
 
 select {
   padding: 0.3rem 0.25rem;
+  width: 100%;
+  text-overflow: ellipsis;
 }
 
 .checkbox-group {
@@ -264,6 +266,11 @@ footer {
   nav {
     padding: 2rem calc(1.4rem + 0.8vw);
   }
+
+  label {
+    grid-template-columns: 1fr;
+    gap: 0.4rem;
+  }
 }
 
 @media screen and (max-width: 768px) {
@@ -291,10 +298,5 @@ footer {
 
   main {
     padding: 1.5rem 5vw;
-  }
-
-  label {
-    grid-template-columns: 1fr;
-    gap: 0.4rem;
   }
 }
