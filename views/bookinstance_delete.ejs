@@ -31,27 +31,14 @@
     
     <main>
       <section>
-        <h2><span class="subtitle"><%= title %>:</span> <%= author.name %></h2>
+        <h2><span class="subtitle"><%= title %>:</span> <%= bookinstance.book.title %> - <%= bookinstance.imprint %></h2>
 
-        <% if (author_books.length > 0) { %>
-          <p>You must delete the following books before attempting to delete this author:</p>
+        <p>Are you sure you want to delete this copy of <%= bookinstance.book.title %>?</p>
 
-          <ul class="card-list large-cards">
-            <% author_books.forEach((book) => { %>
-              <li class="card">
-                <a href="<%=book.url%>"><%= book.title %></a>
-                <p><%= book.summary %></p>
-              </li>
-            <% }) %>
-          </ul>
-        <% } else { %>
-          <p>Are you sure you want to delete this author?</p>
-
-          <form method="post" action="">
-            <input type="hidden" name="authorid" id="authorid" value="<%= author._id %>">  
-            <button type="submit" class="btn btn-secondary">Delete</button>
-          </form>
-        <% } %> 
+        <form method="post" action="">
+          <input type="hidden" name="bookinstanceid" id="bookinstanceid" value="<%= bookinstance._id %>">  
+          <button type="submit" class="btn btn-secondary">Delete</button>
+        </form>
       </section>
     </main>
 

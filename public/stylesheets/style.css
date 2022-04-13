@@ -154,6 +154,7 @@ a.text-danger:hover {
 
 .instance-info {
   display: grid;
+  text-align: center;
 }
 
 .detail-info {
